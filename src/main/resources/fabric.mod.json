@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "whitelistsingelplayer",
+  "version": "${version}",
+  "name": "WhitelistSingelplayer",
+  "description": "A mod from Ovilli",
+  "authors": ["Ovilli"],
+  "license": "MIT",
+  "icon": "assets/whitelistsingelplayer/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "modmenu": [
+      "net.ovilli.whitelistsingelplayer.client.ClientModMenuImpl"
+    ],
+    "fabric-datagen": [
+      "net.ovilli.whitelistsingelplayer.client.WhitelistsingelplayerDataGenerator"
+    ],
+    "client": [
+      "net.ovilli.whitelistsingelplayer.client.WhitelistsingelplayerClient"
+    ],
+    "main": [
+      "net.ovilli.whitelistsingelplayer.Whitelistsingelplayer"
+    ]
+  },
+  "mixins": [
+    "whitelistsingelplayer.mixins.json",
+    {
+      "config": "whitelistsingelplayer.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
