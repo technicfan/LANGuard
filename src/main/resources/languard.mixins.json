@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.ovilli.whitelistsingelplayer.mixin.client",
+  "package": "net.ovilli.languard.mixin",
   "compatibilityLevel": "JAVA_21",
-  "client": [
+  "mixins": [
   ],
   "injectors": {
     "defaultRequire": 1
