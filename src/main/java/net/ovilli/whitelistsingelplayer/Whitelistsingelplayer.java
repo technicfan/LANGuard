@@ -22,6 +22,8 @@ import java.util.Set;
 
 public class Whitelistsingelplayer implements ModInitializer{
 
+    private static String CLIENT_NAME;
+    private static boolean CLIENT_NAME_SET = false;
     public static final Set<String> WHITELIST = new HashSet<>();
     public static Path CONFIG_DIR;
 
@@ -39,6 +41,16 @@ public class Whitelistsingelplayer implements ModInitializer{
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             checkPlayer(newPlayer);
         });
+    }
+
+    public static void setClientName(String name) {
+        if (CLIENT_NAME_SET) {
+            throw new IllegalStateException(
+                "CLIENT_NAME can only be set once (by the client init function)!"
+            );
+        }
+        CLIENT_NAME = name;
+        CLIENT_NAME_SET = true;
     }
 
     private void loadWhitelist() {
@@ -66,7 +78,7 @@ public class Whitelistsingelplayer implements ModInitializer{
 
     private void checkPlayer(ServerPlayerEntity player) {
         String name = player.getGameProfile().getName();
-        if (!WHITELIST.contains(name)) {
+        if (!CLIENT_NAME.equals(name) && !WHITELIST.contains(name)) {
             player.networkHandler.disconnect(Text.of("You are not allowed to join this server."));
         }
     }
