@@ -1,37 +1,59 @@
 {
   "schemaVersion": 1,
-  "id": "whitelistsingelplayer",
-  "version": "${version}",
-  "name": "WhitelistSingelplayer",
-  "description": "A mod from Ovilli",
+  "id": "languard",
+  "version": "1.4",
+  "name": "LANGuard",
+  "description": "Secure Your LAN World – Block uninvited players from joining your LAN",
   "authors": ["Ovilli"],
+  "contact": {
+    "homepage": "https://modrinth.com/user/Ovilli",
+    "support": "https://www.patreon.com/c/Ovili",
+    "email": "ovilli.modding@gmail.com",
+    "source": "https://github.com/Ovilli",
+    "issues": "https://github.com/Ovilli/LANGuard/issues"
+  },
   "license": "MIT",
-  "icon": "assets/whitelistsingelplayer/icon.png",
+  "icon": "assets/languard/icon.png",
   "environment": "*",
   "entrypoints": {
     "modmenu": [
-      "net.ovilli.whitelistsingelplayer.client.ClientModMenuImpl"
+      "net.ovilli.languard.client.ClientModMenuImpl"
     ],
     "fabric-datagen": [
-      "net.ovilli.whitelistsingelplayer.client.WhitelistsingelplayerDataGenerator"
+      "net.ovilli.languard.client.LANGuardDataGenerator"
     ],
     "client": [
-      "net.ovilli.whitelistsingelplayer.client.WhitelistsingelplayerClient"
+      "net.ovilli.languard.client.LANGuardClient"
     ],
     "main": [
-      "net.ovilli.whitelistsingelplayer.Whitelistsingelplayer"
+      "net.ovilli.languard.LANGuard"
     ]
   },
   "mixins": [
-    "whitelistsingelplayer.mixins.json",
+    "languard.mixins.json",
     {
-      "config": "whitelistsingelplayer.client.mixins.json",
+      "config": "languard.client.mixins.json",
       "environment": "client"
     }
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.16.14",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "1.21"
+  },
+  "contributors": [
+    "Ovilli",
+    "KenopsicManiac",
+    "technicfan"
+  ],
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Homepage": "https://modrinth.com/user/Ovilli",
+        "Support": "https://www.patreon.com/c/Ovili",
+        "Email": "mailto:ovilli.modding@gmail.com",
+        "Source": "https://github.com/Ovilli"
+      }
+    }
   }
 }
